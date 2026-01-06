@@ -1,0 +1,26 @@
+{
+  "name": "cc-marketplace",
+  "owner": {
+    "name": "CHarrisTech",
+    "email": ""
+  },
+  "metadata": {
+    "description": "Community Claude Code plugins",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "auto-dev",
+      "source": "./plugins/auto-dev-plugin",
+      "description": "Autonomous development toolkit with test-gated subagents, prompt classification, and activity logging. Enables 'assign and walk away' workflows.",
+      "version": "1.0.0",
+      "author": {
+        "name": "CHarrisTech"
+      },
+      "license": "MIT",
+      "keywords": ["hooks", "subagents", "test-gates", "autonomous", "quality-gates"],
+      "category": "productivity"
+    }
+  ]
+}

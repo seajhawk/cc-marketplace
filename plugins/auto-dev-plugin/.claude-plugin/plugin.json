@@ -1,0 +1,59 @@
+{
+  "name": "auto-dev",
+  "description": "Autonomous development toolkit with test-gated subagents, prompt classification, and activity logging. Enables 'assign and walk away' workflows.",
+  "version": "1.0.0",
+  "author": {
+    "name": "CHarrisTech"
+  },
+  "keywords": ["hooks", "subagents", "test-gates", "autonomous", "quality-gates"],
+  "repository": "https://github.com/CHarrisTech/cc-marketplace",
+  "commands": [
+    "./commands/"
+  ],
+  "agents": [
+    "./skills/subagents/SKILL.md",
+    "./skills/interview-skill/SKILL.md"
+  ],
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ${CLAUDE_PLUGIN_ROOT}/hooks/classify-prompt.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ${CLAUDE_PLUGIN_ROOT}/hooks/test-gate.py",
+            "timeout": 180
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ${CLAUDE_PLUGIN_ROOT}/hooks/smart-stop.py",
+            "timeout": 180
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"],
+      "description": "Chrome DevTools MCP server for browser automation and e2e testing"
+    }
+  }
+}

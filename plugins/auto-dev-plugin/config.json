@@ -1,0 +1,22 @@
+{
+  "$schema": "./config.schema.json",
+  "testCommands": {
+    "backend": {
+      "enabled": true,
+      "directory": ".",
+      "command": "npm test",
+      "timeout": 120
+    },
+    "frontend": {
+      "enabled": false,
+      "directory": ".",
+      "command": "npm test",
+      "timeout": 120
+    }
+  },
+  "codeExtensions": [".py", ".ts", ".tsx", ".js", ".jsx", ".go", ".rs", ".java"],
+  "logging": {
+    "enabled": true,
+    "logFile": "logs/activity.jsonl"
+  }
+}
