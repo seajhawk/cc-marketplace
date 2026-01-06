@@ -251,6 +251,15 @@ Use `/auto-dev:analyze` to view metrics.
 - Python 3.10+ (for hooks)
 - Node.js (for Chrome MCP server)
 
+
+## Test Prompt
+1. create a file called "deleteme.py"
+2. add a small python hello world script to the file
+3. validate that it works
+4. delete the file
+5. tell me a joke
+6. tell me if the python script worked
+
 ## License
 
 MIT
