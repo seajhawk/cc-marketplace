@@ -6,7 +6,7 @@
     "name": "CHarrisTech"
   },
   "keywords": ["hooks", "subagents", "test-gates", "autonomous", "quality-gates"],
-  "repository": "https://github.com/CHarrisTech/cc-marketplace",
+  "repository": "https://github.com/seajhawk/cc-marketplace",
   "commands": [
     "./commands/"
   ],
