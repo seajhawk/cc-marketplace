@@ -5,8 +5,13 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python hooks/classify-prompt.py",
-            "timeout": 5
+            "command": "python .claude/hooks/log-prompt.py",
+            "timeout": 3
+          },
+          {
+            "type": "prompt",
+            "prompt": "Classify this prompt for Claude Code:\n\n$ARGUMENTS\n\nDetermine if this is a CODING_TASK (needs code changes, implementation, fixing bugs, running tests) or QUICK_QUESTION (explanations, questions, simple lookups, conversation).\n\nIf multiple distinct requests, classify each.\n\nRespond with JSON:\n{\n  \"decision\": \"approve\",\n  \"hookSpecificOutput\": {\n    \"hookEventName\": \"UserPromptSubmit\",\n    \"additionalContext\": \"[TASK_TYPE: CODING_TASK|QUICK_QUESTION] Brief guidance\"\n  }\n}",
+            "timeout": 10
           }
         ]
       }
@@ -16,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python hooks/test-gate.py",
+            "command": "python .claude/hooks/subagent-test-gate.py",
             "timeout": 180
           }
         ]
@@ -27,7 +32,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python hooks/smart-stop.py",
+            "command": "python .claude/hooks/smart-stop.py",
             "timeout": 180
           }
         ]
