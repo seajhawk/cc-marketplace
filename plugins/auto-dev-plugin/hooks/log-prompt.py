@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 LOG_FILE = Path(__file__).parent.parent / "logs" / "activity.jsonl"
 
 
-def log_prompt(prompt_preview: str):
+def log_prompt(prompt_preview: str, raw_input: dict = None):
     """Log prompt submission to activity file."""
     try:
         LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -23,7 +23,8 @@ def log_prompt(prompt_preview: str):
             "hook": "UserPromptSubmit",
             "success": True,
             "data": {
-                "prompt_preview": prompt_preview[:100]
+                "prompt_preview": prompt_preview[:100],
+                "input_keys": list(raw_input.keys()) if raw_input else []
             }
         }
 
@@ -39,7 +40,7 @@ def main():
         prompt = input_data.get("prompt", "")
 
         if prompt and prompt.strip():
-            log_prompt(prompt)
+            log_prompt(prompt, input_data)
 
         # Output nothing - let the prompt-type hook handle classification
         sys.exit(0)
